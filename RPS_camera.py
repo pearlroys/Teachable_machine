@@ -5,6 +5,7 @@ from keras.models import load_model
 import numpy as np
 import time
 
+
 class items(IntEnum):
         Rock =  0
         Paper = 1
@@ -26,15 +27,13 @@ class VisualRps():
 
     # audio intro into the game with instruction to click
     def introduction(self):
-       self.name = input("pls your name: ")
-        
-    
+        self.name = input("pls your name: ")
+        print(f" Welcome {self.name} to the ROCK PAPER SCISSORS GAME, have fun!")
+ 
     # left click to begin and move along in the game
     def left_click(self, event, x, y, flags, param):
         if event == cv2.EVENT_LBUTTONDOWN:
             time.time()
-
-                    
 
     # to get user choice
     def get_prediction(self):
@@ -45,11 +44,6 @@ class VisualRps():
         print(self.user_choice)
         return self.user_choice
         
-        
-
-    
-        
-
     # get computer choice and choice name
     def get_comp_choice(self):
         
@@ -102,8 +96,8 @@ class VisualRps():
         
 
     def open(self):
-        #global frame
-        #displays instruction for starting a round & stopping the game
+        
+        #displays instruction for starting and getting through the game
         self.data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
         ret, self.frame = self.cap.read()
         if self.frame is None:
@@ -114,37 +108,20 @@ class VisualRps():
         image_np = np.array(resized_frame)
         normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
         self.data[0] = normalized_image
-     # records box
-        cv2.rectangle(self.frame, (10,10), (600, 50), (255,255,0), -1)
-        message = "Stage: " + str(self.rounds) + " "  + "Scores " + str(self.name) + ":" + str(self.user_score) + " CPU:" + str(self.computer_score)
-        cv2.putText(self.frame, message, (20,40), 1, 2, (0,0,0))
+
+         # records and instruction box
         font = cv2.FONT_HERSHEY_SIMPLEX
-        #cv2.putText(self.frame, 'Hold b to start countdown', (0, 100), font, 2, (118, 237, 250), 2, cv2.LINE_AA)
-        #cv2.putText(self.frame, 'Hold q to stop game', (800, 700), font, 2, (78, 99, 235), 2, cv2.LINE_AA)
+        cv2.rectangle(self.frame, (10,10), (600, 120), (255,255,0), -1)
+        message = "Stage: " + str(self.rounds) + " "  + "Scores " + str(self.name) + ":" + str(self.user_score) + " CPU:" + str(self.computer_score)
+        cv2.putText(self.frame, message, (20,60), 1, 2, (0,0,0))
+        cv2.putText(self.frame, 'Hold b to start or q to quit', (20,100), 1, 2, (255,0,0))
         cv2.imshow('self.frame', self.frame)
 
-    def display(self):
-        self.open()
-       
-
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(self.frame, f" {self.name}'s  Move: {self.user_choice}",
-                    (50, 50), font, 1.2, (255, 255, 255), 2, cv2.LINE_AA)
-        cv2.putText(self.frame, f" Computer's Move: {self.comp_choice}",
-                    (750, 50), font, 1.2, (255, 255, 255), 2, cv2.LINE_AA)
-        
-        cv2.putText(self.frame, f" Winner: {self.winner}",
-                    (400, 600), font, 2, (0, 0, 255), 4, cv2.LINE_AA)
-        
-        
-
-       
     
     def end_game(self):
-    
+        # for ending the game
         self.cap.release()
-        # Destroy all the windows
-        if self.computer_score == 3 or self.user_score == 3:
+        if self.computer_score == 2 or self.user_score == 2:
             print(f'Game over we have a winner')
         else:
             print(f'You left game before the outcome was determined')
@@ -155,8 +132,7 @@ class VisualRps():
 
 
 def play():
-    
-
+    #instantiating the class
     game = VisualRps()
     game.introduction()
     
@@ -164,10 +140,9 @@ def play():
         timer = 5
         #opens camera
         game.open()
-         # left click mouse to start game
+         # press b to start game
         if cv2.waitKey(80) & 0xFF == ord('b'):
             prev_time = time.time()
-            
             while timer > 0:
                 game.open()
                 cv2.putText(game.frame, str(timer), (190,420), 2, 3, (0,0,0))
@@ -179,6 +154,7 @@ def play():
                 if curr_time - prev_time >= 1:
                     prev_time = curr_time
                     timer = timer - 1
+            # after coundown show choices and winner
             else:
                 game.open()
                 game.get_prediction()
@@ -186,51 +162,47 @@ def play():
                 comp_choice = game.get_comp_choice()
                 game.get_winnner(comp_choice, user_choice)
 
+                # output winner 
                 font = cv2.FONT_HERSHEY_SIMPLEX 
-                #name = input("pls your name: ")
-                cv2.putText(game.frame, f" {game.name}'s  Move: {game.user_choice}",
-                            (50, 50), font, 1.2, (255, 255, 255), 2, cv2.LINE_AA)
-                cv2.putText(game.frame, f" Computer's Move: {game.comp_choice}",
-                            (750, 50), font, 1.2, (255, 255, 255), 2, cv2.LINE_AA)
+                cv2.putText(game.frame, f" {game.name}'s  Move: {game.user_choice.name}",
+                            (50, 250), font, 1.2, (0, 0, 0), 2, cv2.LINE_AA)
+                cv2.putText(game.frame, f" CPU's Move: {game.comp_choice.name}",
+                            (600, 250), font, 1.2, (0, 0, 0), 2, cv2.LINE_AA)
                 
                 cv2.putText(game.frame, f" Winner: {game.winner}",
-                            (400, 600), font, 2, (0, 0, 255), 4, cv2.LINE_AA)
+                            (300, 600), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
+                cv2.imshow('game.frame', game.frame)
+                cv2.waitKey(1)
 
 
                 # pick over all winner
-                if game.computer_score == 3:
-                    print("Once again a machine defeats a human")
-                    game.end_game()
-                    break
-                    
+                if game.computer_score == 2:
+                    # always call the open() in order to read and show the displays
                     game.open()
-
                     cv2.rectangle(game.frame, (50,80), (402, 160), (180,170,50), -1)
                     cv2.putText(game.frame, "GAME OVER", (135,110), 3, 1, (0,0,0))
-                    cv2.putText(game.frame, "CPU" + " wins!", (110,150), 3, 1, (0,0,0))
+                    cv2.putText(game.frame, "Once again, a machine defeats a human!", (110,150), 3, 1, (0,0,0))
                     cv2.imshow('game.frame', game.frame)
-                    cv2.waitKey(30)
-
-                elif game.user_score == 3:
-                    print(f" Congratulations, you {game.name} are the winner")
+                    cv2.waitKey(6000)
                     game.end_game()
                     break
-                    game.open()
 
+                elif game.user_score == 2:
+                  
+                    game.open()
                     cv2.rectangle(game.frame, (50,80), (402, 160), (180,170,50), -1)
                     cv2.putText(game.frame, "GAME OVER", (135,110), 3, 1, (0,0,0))
                     cv2.putText(game.frame, game.name + " wins!", (110,150), 3, 1, (0,0,0))
                     cv2.imshow('game.frame', game.frame)
+                    cv2.waitKey(6000)
+                    game.end_game()
+                    break
                 
             
         #if user press q camera and game stops
         
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-       
-    
-        
-
   
 play()
                

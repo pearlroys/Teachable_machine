@@ -1,24 +1,27 @@
 import random
 from enum import IntEnum
 
-
+# insted of using string inputs the enumerat eallows us to iterate through a sequence 
+# but it keeps track of both the index and the element
 score = 0
 class items(IntEnum):
     Rock =  0
     Paper = 1
     Scissors = 2
 
-
+#to get the computer choice
 def get_computer_choice():
     choice = random.randint(0, len(items) - 1)
     choice_item = items(choice)
     return choice_item
 
+# to get the users choice
 def get_user_choice():
     user_choices = int(input("Pick an item: Rock[0], Paper[1], Scissors[2]: "))
     choice_item = items(user_choices)
     return choice_item
-
+#methdo to choice the winner, note this function was changed a bit in the camera version
+#  because nested if statments could prove a difficult sometimess
 def get_winner(computer_choice, user_choice):
     global score
  
@@ -46,9 +49,7 @@ def get_winner(computer_choice, user_choice):
         
         
        
-    
-
-                   
+#funtion logic                  
 def play():
     while 1 and score != 3:
         try:
@@ -62,7 +63,7 @@ def play():
     
         
 
-
+#calling main
 
 if __name__ == "__main__":
     play()     
