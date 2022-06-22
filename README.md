@@ -56,7 +56,8 @@ A play() fuction that held the whole logic of the game was created after. It ins
 ###### Conclusion:
 Positives: Instead of using global variables, object- oriented programming was used to make sure each of the variables I initialized would translate throughout the different functions. I learned that it is easier to break the content up based on the proposed function and group them together using a clearly defined class. Therefore, it is easier to call each of the functions and I know there isn't any confusion in terms of the variables used.
 
-Future Goals: Incorporating  an audio intro to enable the user prepare for the game, also while the teachable machine tool made training of the model easier. It was however difficult to recognise some of the displays and made frequent errors, training the model from scratch should be a better option to assist readability 
+Future Goals: Incorporating  an audio intro to enable the user prepare for the game, also while the teachable machine tool made training of the model easier. It was however difficult to recognise some of the displays and made frequent errors, training the model from scratch should be a better option to assist readability.
+It would be generally easier to use clicks on the mouse to go through the game so using the CV.MOUSECALLBACK and moving through the game by left or right lciks would be faster and more gui friendly.
 
 Problem Solving: In terms of programming, I found the hardest part was integrating the camera into the game but after going through the opencv documentation I discovered several of my functions required the ret, frame = cap.read function to read the screen before it would give an output, i created tghe open() method to enableme call this whenever i wanted to print on the screen. 
 
@@ -70,4 +71,4 @@ The screen of the game after a choice is made
  
  
  <img width="1440" alt="Screen Shot 2022-06-21 at 22 49 18" src="https://user-images.githubusercontent.com/103274172/174921118-cdc5d8cd-990d-4d10-bca6-c496e94196da.png">
-I stuggled with integrating the camera into the game, this was one of the few times I was so focused trying to resolve the issues with the code.
+I stuggled with integrating the camera into the game, this was one of the few times I was so focused trying to resolve the issues with the code 😆.
