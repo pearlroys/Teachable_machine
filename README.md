@@ -59,3 +59,11 @@ Positives: Instead of using global variables, object- oriented programming was u
 Future Goals: Incorporating  an audio intro to enable the user prepare for the game, also while the teachable machine tool made training of the model easier. It was however difficult to recognise some of the displays and made frequent errors, training the model from scratch should be a better option to assist readability 
 
 Problem Solving: In terms of programming, I found the hardest part was integrating the camera into the game but after going through the opencv documentation I discovered several of my functions required the ret, frame = cap.read function to read the screen before it would give an output, i created tghe open() method to enableme call this whenever i wanted to print on the screen. 
+
+
+
+
+<img width="1440" alt="Screen Shot 2022-06-21 at 23 59 52" src="https://user-images.githubusercontent.com/103274172/174920730-f1355bc0-3541-4d2f-871a-60085b397e64.png"> 
+The screen of the game after a choice is made
+
+
