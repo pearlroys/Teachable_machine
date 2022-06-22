@@ -8,6 +8,43 @@ Using the google [Teachable Machine](https://teachablemachine.withgoogle.com/tra
 
 
 ### Milestone 2: Installing the dependencies (Completed):
+To prevent dependency version conflicts, creating virtual environments helps to keep dependencies required by different projects separate by creating isolated python virtual environments for them. A conda environment with python 3.8 was created for this project as this was easier to use than the current version 3.9 at the time. 
+Intasllation of these dependencies were necessary for this project: 
+opencv python - a library for computer vision
+tenserflow - a library for machine learning & AI
+ipykernel - a package that provides a IPython kernel for Jupyter
+
+This project was created using an Apple M1 chip Macbook and the procedure for both creating a virtual environment and installing of tensorflow and opencv was tricky, I have put the exact codes used:
+
+```
+conda create -n tensorflow-env python=3.8
+conda activate tensorflow-env
+conda install pip
+chmod +x ~/Downloads/Miniforge3-MacOSX-arm64.sh
+sh ~/Downloads/Miniforge3-MacOSX-arm64.sh
+source ~/miniforge3/bin/activate
+conda activate tensorflow-env
+conda install -c apple tensorflow-deps
+python -m pip install tensorflow-macos
+python -m pip install tensorflow-metal
+conda install -c conda-forge opencv
+pip install ipykernel
+```
+
+
+
+
+
+
+
+
+
+
+
+The model was then run on a local machine using the previously made conda environment as the Jupyter/Python interpreter. The following code was used to test the decision accuracy of the model and ensure it recognized the different classes.
+
+
+
 #### Milestone 3: Creating the Rock, Paper, Scissor Game: (Completed)
 ##### Milestone 4: Putting it together (Completed):
 ###### Conclusion:
