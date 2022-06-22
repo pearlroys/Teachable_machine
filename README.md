@@ -66,4 +66,8 @@ Problem Solving: In terms of programming, I found the hardest part was integrati
 <img width="1440" alt="Screen Shot 2022-06-21 at 23 59 52" src="https://user-images.githubusercontent.com/103274172/174920730-f1355bc0-3541-4d2f-871a-60085b397e64.png"> 
 The screen of the game after a choice is made
 
-
+<img width="1440" alt="Screen Shot 2022-06-22 at 00 00 54" src="https://user-images.githubusercontent.com/103274172/174921071-7979799f-7d32-4a9d-8575-0868599a0b60.png">
+ 
+ 
+ <img width="1440" alt="Screen Shot 2022-06-21 at 22 49 18" src="https://user-images.githubusercontent.com/103274172/174921118-cdc5d8cd-990d-4d10-bca6-c496e94196da.png">
+I stuggled with integrating the camera into the game, this was one of the few times I was so focused trying to resolve the issues with the code.
