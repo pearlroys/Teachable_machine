@@ -9,7 +9,7 @@ Using the google [Teachable Machine](https://teachablemachine.withgoogle.com/tra
 
 ### Milestone 2: Installing the dependencies:
 To prevent dependency version conflicts, creating virtual environments helps to keep dependencies required by different projects separate by creating isolated python virtual environments for them. A conda environment with python 3.8 was created for this project as this was easier to use than the current version 3.9 at the time. 
-Intasllation of these dependencies were necessary for this project: 
+Installation of these dependencies were necessary for this project: 
 opencv python - a library for computer vision
 tenserflow - a library for machine learning & AI
 ipykernel - a package that provides a IPython kernel for Jupyter
@@ -59,7 +59,7 @@ A play() fuction that held the whole logic of the game was created after. It ins
 Positives: Instead of using global variables, object- oriented programming was used to make sure each of the variables I initialized would translate throughout the different functions. I learned that it is easier to break the content up based on the proposed function and group them together using a clearly defined class. Making it easier to call each of the functions used.
 
 Future Goals: Incorporating  an audio intro to enable the user prepare for the game, also while the teachable machine tool made training of the model easier. It was however difficult to recognise some of the displays and made frequent errors, training the model from scratch should be a better option to assist readability.
-It would be generally easier to use clicks on the mouse to go through the game so using the CV.MOUSECALLBACK and moving through the game by left or right lciks would be faster and more gui friendly.
+It would be generally easier to use clicks on the mouse to go through the game so using the CV.MOUSECALLBACK and moving through the game by left or right cliks would be faster and more gui friendly.
 
 Problem Solving: In terms of programming, I found the hardest part was integrating the camera into the game but after going through the opencv documentation I discovered several of my functions required the ret, frame = cap.read function to read the screen before it would give an output, I created the open() method to enable me call this whenever I wanted to print on the screen. 
 
